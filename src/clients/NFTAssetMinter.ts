@@ -19,9 +19,7 @@ import { File } from "buffer";
 
 import algosdk, { Algodv2 } from "algosdk";
 import { IPFSPinningService } from "../api/types";
-import { SignTxnRequest } from "@gradian/util/dist/src/types";
-import { Signer } from "@gradian/util/dist/src/signer/types";
-import { AlgorandUtil } from "@gradian/util";
+import { AlgorandUtil, Signer, SignTxnRequest } from "@gradian/util";
 
 export default class AssetMinter<TOptions> {
   signer: Signer;

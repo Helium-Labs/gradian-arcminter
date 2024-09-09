@@ -4,6 +4,17 @@ import { CID } from "multiformats/cid";
 import { ConfigAsset, CreateAssetTransactionConfig } from "./types.js";
 import crypto from "crypto";
 
+export function Assert(value: boolean, message: string): asserts value is true {
+  if (!value) {
+    throw new Error(message)
+  }
+}
+export function AssertDefined<T>(value: T | undefined | null, message: string): asserts value is T {
+  if (value === undefined || value === null) {
+    throw new Error(message)
+  }
+}
+
 type IPFSHashProperties = {
   version: number;
   codec: string | undefined;
@@ -50,6 +61,7 @@ export async function getSHA256Checksum(imageBuffer: Buffer): Promise<string> {
 
 export function getTypeFromMimeType(filetype: string): string {
   const [type, _] = filetype.split("/");
+  AssertDefined(type, "Type must be defined")
   return type;
 }
 

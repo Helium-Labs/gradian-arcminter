@@ -1,6 +1,6 @@
 {
   "name": "@gradian/arcminter",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Utility for creating and configuring ARC 3, 19, and 69 compliant digital assets on the Algorand blockchain.",
   "scripts": {
     "test": "jest",
@@ -11,16 +11,22 @@
     "url": "https://github.com/Helium-Labs/gradian-arcminter"
   },
   "author": "",
-  "license": "ISC",
-  "main": "dist/bundle.cjs",
-  "module": "dist/bundle.mjs",
-  "types": "dist/src/index.d.ts",
+  "license": "MIT",
+  "main": "./dist/bundle.cjs",
+  "module": "./dist/bundle.mjs",
   "exports": {
     ".": {
-      "require": "./dist/bundle.cjs",
-      "import": "./dist/bundle.mjs"
+      "import": {
+        "types": "./dist/src/index.d.ts",
+        "default": "./dist/bundle.mjs"
+      },
+      "require": {
+        "types": "./dist/src/index.d.ts",
+        "default": "./dist/bundle.cjs"
+      }
     }
   },
+  "types": "./dist/src/index.d.ts",
   "dependencies": {
     "@gradian/util": "^1.3.7",
     "@json-rpc-tools/utils": "^1.7.6",

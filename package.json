@@ -1,7 +1,7 @@
 {
   "name": "@gradian/arcminter",
   "version": "1.5.0",
-  "description": "Utility for creating and configuring ARC 3, 19, and 69 compliant digital assets on the Algorand blockchain.",
+  "description": "A library for minting and configuring ARC-3, ARC-19, and ARC-69 compliant Algorand Standard Assets (ASA) NFTs.",
   "scripts": {
     "test": "jest",
     "build": "rollup --config rollup.config.mjs"

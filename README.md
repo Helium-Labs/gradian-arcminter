@@ -1,6 +1,12 @@
 # Arcminter
 
-Arcminter is a utility for creating and configuring ARC 3, 19, and 69 compliant digital assets stored on Algorand, with support for a wide range of media types. Multiple signing and IPFS pinning options are available.
+A library for minting and configuring ARC-3, ARC-19, and ARC-69 compliant Algorand Standard Assets (ASA) NFTs.
+
+## Features
+
+- Mint and configure ARC-3, ARC-19, and ARC-69 compliant Algorand Standard Assets (ASA) NFTs.
+- Supports the Pinata IPFS pinning service and can be easily extended to include other pinning services.
+- Authenticate transactions using WalletConnect or X25519 keys.
 
 ## Installation
 
@@ -8,77 +14,9 @@ Arcminter is a utility for creating and configuring ARC 3, 19, and 69 compliant 
 npm install @gradian/arcminter
 ```
 
-## Features
-
-- Create and configure ARC 3, 19, and 69 compliant digital assets stored on Algorand.
-- Supports Pinata and NFTStorage IPFS pinning services.
-- Authenticate transactions with WalletConnect, or X25519 keys.
-
 ## Usage
 
-```typescript
-import { NFTAssetMinter } from "@gradian/arcminter";
-import { PinataPinOptions, PinataIPFSClient } from "@gradian/arcminter/api/types";
-import { Signer } from '@gradian/util';
-
-// Values is an object, for example representing form fields
-const createAssetConfig: CreateAssetTransactionConfig = {
-    assetName: values.assetName,
-    unitName: values.unitName,
-    total: values.quantity,
-    decimals: values.decimals,
-    defaultFrozen: values.defaultFrozen,
-    manager: values.managerAddress,
-    freeze: values.freezeAddress,
-    clawback: values.clawbackAddress,
-    reserve: values.reserveAddress
-}
-
-const file: File = values.files[0]
-
-// JSON metadata set to be pinned to IPFS (through Pinata), aiming for idempotence in future versions.
-const options: Arc3Arc19Metadata = {
-    description: values.description,
-    name: values.assetName,
-    external_url: 'https://test',
-    properties: JSON.parse(values.metadataJson),
-    network: 'testnet' as 'testnet' | 'mainnet'
-}
-
-// Create an instance of your preferred pinning service
-const pinata = new PinataIPFSClient("your_jwt");
-
-// Create a WalletConnectSigner, for signing transactions using the specified WalletConnect connector instance (connected wallet) with the 'sign' function.
-// 'algoClient' is an algorand client (AlgodV2 instance)
-const walletConnectSigner: Signer.WalletConnectSigner = new Signer.WalletConnectSigner(algoClient, walletConnect.connector)
-
-// inject the pinning service and signer as dependencies into the minter
-const nftAssetMinter = new NFTAssetMinter(algoClient, pinata, walletConnectSigner)
-
-// Create options that are specific to the pinning service, and provide to the pinned file when minting
-const pinataOptions: PinataPinOptions = {
-    pinataOptions: {
-    cidVersion: 1,
-    },
-    pinataMetadata: {
-    name: "Untitled",
-    },
-};
-
-// Mint the asset
-const mintedAssetIndex = await nftAssetMinter.minterCreateArc3Asset(
-    createAssetConfig,
-    options,
-    file,
-    pinataOptions
-)
-```
-
-## ARC3, ARC19, and ARC69 Algorand Request for Comment Standards
-
-- [ARC3 Digital Assets](https://github.com/algorandfoundation/ARCs/blob/main/ARCs/arc-0003.md)
-- [ARC19 Digital Assets](https://github.com/algorandfoundation/ARCs/blob/main/ARCs/arc-0019.md)
-- [ARC69 Digital Assets](https://github.com/algorandfoundation/ARCs/blob/main/ARCs/arc-0069.md)
+See examples of usage in the [tests](./tests) folder.
 
 ## License
 
@@ -86,7 +24,7 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ## Disclaimer
 
-**This software is intended for educational purposes, and is not intended to faciliate any illegal activity. You assume all responsibility in using this open source software.**
+This software is intended for educational purposes only and is not meant to facilitate any illegal activity. You assume all responsibility when using this open-source software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 

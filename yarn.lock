@@ -291,10 +291,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@gradian/util@^1.3.6":
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/@gradian/util/-/util-1.3.6.tgz#41769eeb683f36a5115f324a352b530998b1cf0c"
-  integrity sha512-nvBuDahaB8eF2SNKqWo1YLXBvCficUoOGS9pxr2V3B8rFuFypYNh0ycTj4MYSMgcThsInYX7/NzVcbLdlFfNQA==
+"@gradian/util@^1.3.7":
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/@gradian/util/-/util-1.3.7.tgz#9c4a107255905e414e0cd45be4a7f5f533ae31af"
+  integrity sha512-qIyL7KkTsNhahssR/7YKwhYop3Sv1SkUwGVWy/zp7RizcN12ZxUZP8XiqPo8IuKk+zHI0Ojr4pHrhuuMHF7wSw==
   dependencies:
     "@json-rpc-tools/utils" "^1.7.6"
     algosdk "^2.7.0"

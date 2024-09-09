@@ -5,8 +5,6 @@ import json from "@rollup/plugin-json";
 import nodePolyfills from "rollup-plugin-polyfill-node";
 import typescript from 'rollup-plugin-typescript2';
 
-const nodeBuiltIns = ['assert', 'buffer', 'child_process', 'cluster', 'console', 'constants', 'crypto', 'dgram', 'dns', 'domain', 'events', 'fs', 'http', 'https', 'module', 'net', 'os', 'path', 'process', 'punycode', 'querystring', 'readline', 'repl', 'stream', 'string_decoder', 'sys', 'timers', 'tls', 'tty', 'url', 'util', 'v8', 'vm', 'zlib']
-
 export default [
   // Browser config
   {
@@ -44,12 +42,12 @@ export default [
         format: "cjs",
       },
     ],
-    external: ["algosdk", "@json-rpc-tools/utils", ...nodeBuiltIns],
+    external: ["algosdk", "@json-rpc-tools/utils"],
     plugins: [
       json(),
       commonjs(),
       nodeResolve({
-        preferBuiltins: false,
+        preferBuiltins: true,
       }),
       typescript({
         tsconfig: "./tsconfig.cjs.json",

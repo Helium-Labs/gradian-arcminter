@@ -29,7 +29,7 @@ const getAlgod = async () => {
   }
 }
 
-test("TODO", async () => {
+test("Can mint ARC asset", async () => {
   // minterCreateArc19Asset
   const algod = await getAlgod()
   const account = algosdk.mnemonicToSecretKey(TEST_MNEMONIC)

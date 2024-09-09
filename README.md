@@ -18,10 +18,6 @@ npm install @gradian/arcminter
 
 See examples of usage in the [tests](./tests) folder.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
-
 ## Disclaimer
 
 This software is intended for educational purposes only and is not meant to facilitate any illegal activity. You assume all responsibility when using this open-source software.

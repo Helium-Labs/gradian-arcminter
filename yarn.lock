@@ -897,7 +897,14 @@ algo-msgpack-with-bigint@^2.1.1:
   resolved "https://registry.yarnpkg.com/algo-msgpack-with-bigint/-/algo-msgpack-with-bigint-2.1.1.tgz#38bb717220525b3ff42232eefdcd9efb9ad405d6"
   integrity sha512-F1tGh056XczEaEAqu7s+hlZUDWwOBT70Eq0lfMpBP2YguSQVyxRbprLq5rELXKQOyOaixTWYhMeMQMzP0U5FoQ==
 
-algosdk@^2.6.0, algosdk@^2.7.0:
+algokit-testkit@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/algokit-testkit/-/algokit-testkit-1.2.1.tgz#78f318008551766fe7a212aeaa27d585cb3e009b"
+  integrity sha512-PrMEjb/HMu+0q6ylXdkbztAvr2PgjFAE8zWBS6d3SkrgJAoex7zuQqfDRF1hO8ri5JT6Gh/V/hLW928mv2EhLA==
+  dependencies:
+    algosdk "^2.7.0"
+
+algosdk@^2.7.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/algosdk/-/algosdk-2.9.0.tgz#a93cc26675e5310667ce5e9667305ce48a1818f9"
   integrity sha512-o0n0nLMbTX6SFQdMUk2/2sy50jmEmZk5OTPYSh2aAeP8DUPxrhjMPfwGsYNvaO+qk75MixC2eWpfA9vygCQ/Mg==
@@ -1510,7 +1517,7 @@ diffie-hellman@^5.0.0:
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
 
-dotenv@^16.3.1:
+dotenv@^16.4.5:
   version "16.4.5"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.4.5.tgz#cdd3b3b604cb327e286b4762e13502f717cb099f"
   integrity sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==

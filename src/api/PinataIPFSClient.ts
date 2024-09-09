@@ -114,10 +114,7 @@ export class PinataIPFSClient implements IPFSPinningService<PinataPinOptions> {
    * @param {PinataPinOptions | undefined} options
    * @returns {Promise<string>} IPFS Hash Content Identifier (CID)
    */
-  async pinJSONToIPFS(json: any, options?: PinataPinOptions): Promise<string> {
-    if (!options) {
-      throw new Error("Pinata options are required");
-    }
+  async pinJSONToIPFS(json: any, options: PinataPinOptions): Promise<string> {
     const result = await uploadJSON(json, options, this.JWT);
     return result.IpfsHash;
   }

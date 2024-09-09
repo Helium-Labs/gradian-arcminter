@@ -1,9 +1,9 @@
-import { NFTAssetMinter } from "./clients";
+import { NFTAssetMinter } from "./AssetMinter";
 
 import * as Types from "./types";
 export { Types };
 
-import * as IPFSClientTypes from "./api/types";
-import * as MinterTypes from "./types";
-
-export { NFTAssetMinter, IPFSClientTypes, MinterTypes };
+export * from "./IPFSClients/types";
+export * from "./types";
+export * as IPFSClients from "./IPFSClients"
+export { NFTAssetMinter };

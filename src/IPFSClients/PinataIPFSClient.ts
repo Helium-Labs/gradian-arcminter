@@ -2,20 +2,26 @@ import {
   IPFSPinningService,
 } from "./types";
 import axios from "axios";
-import { pinataFilePinUrl, pinataJSONPinUrl } from "../constants";
 import FormData from "form-data";
+import fs from 'fs'
 import { File } from "buffer";
 
-interface PinataMetadata {
+
+export const PINATA_JSON_PIN_URL =
+  "https://api.pinata.cloud/pinning/pinJSONToIPFS";
+export const PINATA_FILE_PIN_URL =
+  "https://api.pinata.cloud/pinning/pinFileToIPFS";
+
+export interface PinataMetadata {
   [key: string]: string | number | null;
 }
 
-interface PinataPinPolicyItem {
+export interface PinataPinPolicyItem {
   id: string;
   desiredReplicationCount: number;
 }
 
-interface PinataOptions {
+export interface PinataOptions {
   hostNodes?: string[] | undefined;
   cidVersion?: 0 | 1;
   wrapWithDirectory?: boolean;
@@ -24,13 +30,13 @@ interface PinataOptions {
   };
 }
 
-interface PinataPinResponse {
+export interface PinataPinResponse {
   IpfsHash: string;
   PinSize: number;
   Timestamp: string;
 }
 
-interface PinataPinOptions {
+export interface PinataPinOptions {
   pinataMetadata?: PinataMetadata;
   pinataOptions?: PinataOptions | undefined;
 }
@@ -48,7 +54,7 @@ async function uploadJSON(
 
   const config = {
     method: "post",
-    url: pinataJSONPinUrl,
+    url: PINATA_JSON_PIN_URL,
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${jwt}`,
@@ -57,8 +63,7 @@ async function uploadJSON(
   };
 
   const res = await axios(config);
-
-  return res.data;
+  return res.data as any as PinataPinResponse;
 }
 
 async function uploadFile(
@@ -67,16 +72,16 @@ async function uploadFile(
   jwt: string
 ): Promise<PinataPinResponse> {
   const formData = new FormData();
-
-  formData.append("file", file);
+  const fileBuf = await file.arrayBuffer()
+  const fileStream = fs.ReadStream.from(Buffer.from(fileBuf))
+  formData.append("file", fileStream, { filename: 'file' });
 
   const pinataMetadata = JSON.stringify(options.pinataMetadata);
   formData.append("pinataMetadata", pinataMetadata);
-
-  const pinataOptions = JSON.stringify(options.pinataOptions);
+  const pinataOptions = JSON.stringify(options.pinataOptions ?? {});
   formData.append("pinataOptions", pinataOptions);
 
-  const res = await axios.post(pinataFilePinUrl, formData, {
+  const res = await axios.post(PINATA_FILE_PIN_URL, formData, {
     maxBodyLength: Infinity,
     headers: {
       // @ts-ignore

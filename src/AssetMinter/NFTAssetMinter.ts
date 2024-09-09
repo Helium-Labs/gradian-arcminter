@@ -18,7 +18,7 @@ import {
 import { File } from "buffer";
 
 import algosdk, { Algodv2 } from "algosdk";
-import { IPFSPinningService } from "../api/types";
+import { IPFSPinningService } from "../IPFSClients/types";
 import { AlgorandUtil, Signer, SignTxnRequest } from "@gradian/util";
 
 export default class AssetMinter<TOptions> {
@@ -228,6 +228,7 @@ export default class AssetMinter<TOptions> {
       file,
       pinningOptions
     );
+
     createAssetConfig = setEmptyFieldsAsUndefined(createAssetConfig);
     const algoUtil = new AlgorandUtil(this.algoClient);
     const creatorWallet = algoUtil.makeWallet(walletId);
